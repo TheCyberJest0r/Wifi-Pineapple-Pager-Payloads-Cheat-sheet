@@ -10,8 +10,10 @@
 
 [🚀 Quick Start](#-quick-start) • [📊 Diagrams](#-visual-diagrams) • [📚 Functions](#-function-reference) • [💡 Examples](#-common-workflows)
 
-[![GitHub stars](https://img.shields.io/github/stars/user/repo?style=social)](https://github.com)
-[![GitHub forks](https://img.shields.io/github/forks/user/repo?style=social)](https://github.com)
+[![GitHub stars](https://img.shields.io/github/stars/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
+[![GitHub forks](https://img.shields.io/github/forks/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
+[![GitHub issues](https://img.shields.io/github/issues/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
+[![GitHub license](https://img.shields.io/github/license/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 
 </div>
 
@@ -55,6 +57,9 @@
 <div align="center">
 
 **The WiFi Pineapple Pager** is a powerful penetration testing and WiFi security research device that enables authorized security professionals to test network security, perform reconnaissance, and conduct security assessments.
+
+**📝 Author:** [TheCyberJest0r](https://github.com/TheCyberJest0r)  
+**🔗 Repository:** [Wifi-Pineapple-Pager-Payloads-Cheat-sheet](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 
 </div>
 
@@ -289,6 +294,8 @@ DPADLED green
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Accept terms
 SLA_ACCEPT --i-accept
@@ -324,6 +331,8 @@ ALERT_RINGTONE true "Client connected!"
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Configure OpenVPN
 OPENVPN_CONFIGURE enable /root/config.ovpn
@@ -344,6 +353,8 @@ ALERT "VPN Connection Established"
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Configure GPS
 GPS_CONFIGURE /dev/ttyUSB0 9600
@@ -1598,6 +1609,8 @@ USB_EJECT
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Accept terms
 SLA_ACCEPT --i-accept
@@ -1649,6 +1662,8 @@ LOG "Client connected to evil twin"
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Connect to WiFi first
 WIFI_CONNECT wlan0cli "MyNetwork" psk2 "password"
@@ -1669,6 +1684,8 @@ ALERT "VPN Connected"
 
 ```bash
 #!/bin/bash
+# Author: TheCyberJest0r
+# Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
 # Configure GPS
 GPS_CONFIGURE /dev/ttyUSB0 9600
@@ -1738,6 +1755,7 @@ TOS_ACCEPT --i-accept
 
 | Resource | Link |
 |----------|------|
+| 📦 **This Repository** | [GitHub - TheCyberJest0r](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet) |
 | 🌐 **Official Website** | [hak5.org](https://hak5.org) |
 | 📖 **Documentation** | [docs.hak5.org/pineapple-pager](https://docs.hak5.org/pineapple-pager) |
 | 💬 **Forums** | [forums.hak5.org](https://forums.hak5.org) |
@@ -1767,9 +1785,13 @@ This cheat sheet is provided as-is for educational purposes. Refer to Hak5's off
 
 <div align="center">
 
-### Made with ❤️ for the WiFi Pineapple Pager community
+### Made with ❤️ for the Hak5 Community
+
+**Created by [TheCyberJest0r](https://github.com/TheCyberJest0r)**
 
 **⭐ Star this repo if you find it helpful!**
+
+[📦 View on GitHub](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet) • [🐛 Report Issue](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues) • [💡 Request Feature](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
 
 [⬆ Back to Top](#-wifi-pineapple-pager---bash-functions-cheat-sheet)
 
