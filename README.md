@@ -46,6 +46,7 @@
 - [💡 Common Workflows](#-common-workflows)
 - [🔧 Developer Functions](#-developer-functions)
 - [⚖️ Legal & Terms](#️-legal--terms)
+- [📋 Changelog](#-changelog)
 - [📚 Resources](#-resources)
 
 </details>
@@ -321,7 +322,7 @@ DNSSPOOF_ENABLE
 # Start packet capture
 WIFI_PCAP_START
 
-ALERT_RINGTONE true "Client connected!"
+ALERT "Client connected!"  # Obeys system ringtone preferences
 ```
 
 </details>
@@ -506,24 +507,7 @@ ALERT "Attack started successfully"
 
 </details>
 
-<details>
-<summary><b>🔊 ALERT_RINGTONE - Alert with sound</b></summary>
-
-**Syntax:**
-```bash
-ALERT_RINGTONE [ring] [MESSAGE]
-```
-
-**Parameters:**
-- `ring` - `true`/`false` - Play the alert ringtone
-
-**Example:**
-```bash
-ALERT_RINGTONE true "Incoming connection!"
-ALERT_RINGTONE false "Silent notification"
-```
-
-</details>
+> **Note (firmware 1.0.6+):** All alerts now obey system ringtone preferences. The `ALERT_RINGTONE` command has been removed.
 
 <details>
 <summary><b>⏸️ PROMPT - Wait for user dismissal</b></summary>
@@ -941,6 +925,23 @@ PINEAPPLE_SSID_POOL_ADD "attwifi"
 </details>
 
 <details>
+<summary><b>➕ PINEAPPLE_SSID_POOL_ADD_FILE - Add SSIDs from file</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_SSID_POOL_ADD_FILE [/path/to/file]
+```
+
+**Example:**
+```bash
+PINEAPPLE_SSID_POOL_ADD_FILE /root/ssids.txt
+```
+
+**Added in firmware 1.0.6**
+
+</details>
+
+<details>
 <summary><b>▶️ PINEAPPLE_SSID_POOL_START - Start advertising</b></summary>
 
 **Syntax:**
@@ -949,7 +950,7 @@ PINEAPPLE_SSID_POOL_START {random}
 ```
 
 **Parameters:**
-- `random` - Use random BSSIDs (may cause issues)
+- `random` - Optional. Use random BSSIDs when set (default: false)
 
 **Example:**
 ```bash
@@ -1012,14 +1013,38 @@ PINEAPPLE_SSID_POOL_COLLECT_START
 
 </details>
 
-### MAC Filtering
-
 <details>
-<summary><b>🔐 PINEAPPLE_MAC_FILTER_MODE - Set filter mode</b></summary>
+<summary><b>🎭 PINEAPPLE_MIMIC_ENABLE - Enable mimic open networks</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_MAC_FILTER_MODE [allow|deny]
+PINEAPPLE_MIMIC_ENABLE
+```
+
+**Added in firmware 1.0.6**
+
+</details>
+
+<details>
+<summary><b>⏹️ PINEAPPLE_MIMIC_DISABLE - Disable mimic open networks</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_MIMIC_DISABLE
+```
+
+**Added in firmware 1.0.6**
+
+</details>
+
+### Device Filtering (MAC)
+
+<details>
+<summary><b>🔐 PINEAPPLE_DEVICE_FILTER_MODE - Set filter mode</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_DEVICE_FILTER_MODE [allow|deny]
 ```
 
 **Modes:**
@@ -1028,61 +1053,85 @@ PINEAPPLE_MAC_FILTER_MODE [allow|deny]
 
 **Example:**
 ```bash
-PINEAPPLE_MAC_FILTER_MODE allow
-PINEAPPLE_MAC_FILTER_ADD allow "aa:bb:cc:dd:ee:ff"
+PINEAPPLE_DEVICE_FILTER_MODE allow
+PINEAPPLE_DEVICE_FILTER_ADD allow "aa:bb:cc:dd:ee:ff"
 ```
 
 </details>
 
 <details>
-<summary><b>➕ PINEAPPLE_MAC_FILTER_ADD - Add MAC to filter</b></summary>
+<summary><b>➕ PINEAPPLE_DEVICE_FILTER_ADD - Add MAC to filter</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_MAC_FILTER_ADD [allow|deny] [mac]
+PINEAPPLE_DEVICE_FILTER_ADD [allow|deny] [mac]
 ```
 
 </details>
 
 <details>
-<summary><b>➖ PINEAPPLE_MAC_FILTER_DELETE - Remove MAC</b></summary>
+<summary><b>➕ PINEAPPLE_DEVICE_FILTER_ADD_FILE - Add MACs from file</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_MAC_FILTER_DELETE [allow|deny] [mac]
+PINEAPPLE_DEVICE_FILTER_ADD_FILE [allow|deny] [/path/to/file]
+```
+
+**Added in firmware 1.0.6**
+
+</details>
+
+<details>
+<summary><b>➖ PINEAPPLE_DEVICE_FILTER_DELETE - Remove MAC</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_DEVICE_FILTER_DELETE [allow|deny] [mac]
 ```
 
 </details>
 
 <details>
-<summary><b>📋 PINEAPPLE_MAC_FILTER_LIST - List filtered MACs</b></summary>
+<summary><b>📋 PINEAPPLE_DEVICE_FILTER_LIST - List filtered MACs</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_MAC_FILTER_LIST [allow|deny]
+PINEAPPLE_DEVICE_FILTER_LIST [allow|deny]
 ```
 
 </details>
 
-### SSID Filtering
+### Network Filtering (SSID)
 
 <details>
-<summary><b>🔍 PINEAPPLE_SSID_FILTER_MODE - Set SSID filter mode</b></summary>
+<summary><b>🔍 PINEAPPLE_NETWORK_FILTER_MODE - Set SSID filter mode</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_SSID_FILTER_MODE [allow|deny]
+PINEAPPLE_NETWORK_FILTER_MODE [allow|deny]
 ```
 
 </details>
 
 <details>
-<summary><b>➕ PINEAPPLE_SSID_FILTER_ADD - Add SSID to filter</b></summary>
+<summary><b>➕ PINEAPPLE_NETWORK_FILTER_ADD - Add SSID to filter</b></summary>
 
 **Syntax:**
 ```bash
-PINEAPPLE_SSID_FILTER_ADD [allow|deny] [ssid]
+PINEAPPLE_NETWORK_FILTER_ADD [allow|deny] [ssid]
 ```
+
+</details>
+
+<details>
+<summary><b>➕ PINEAPPLE_NETWORK_FILTER_ADD_FILE - Add SSIDs from file</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_NETWORK_FILTER_ADD_FILE [allow|deny] [/path/to/file]
+```
+
+**Added in firmware 1.0.6**
 
 </details>
 
@@ -1120,6 +1169,30 @@ PINEAPPLE_EXAMINE_BSSID [bssid] {time}
 ```bash
 PINEAPPLE_EXAMINE_RESET
 ```
+
+</details>
+
+<details>
+<summary><b>🔄 PINEAPPLE_HOPPING_START - Start channel hopping</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_HOPPING_START
+```
+
+**Added in firmware 1.0.7**
+
+</details>
+
+<details>
+<summary><b>⏹️ PINEAPPLE_HOPPING_STOP - Stop channel hopping</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_HOPPING_STOP
+```
+
+**Added in firmware 1.0.7**
 
 </details>
 
@@ -1401,6 +1474,40 @@ SSH_ADD_KNOWN_HOST [hostname] [keytype] [keydata]
 
 </details>
 
+<details>
+<summary><b>🔋 BATTERY_CHARGING - Check charging status</b></summary>
+
+**Syntax:**
+```bash
+BATTERY_CHARGING
+```
+
+**Returns:** Charging status
+
+**Added in firmware 1.0.7**
+
+</details>
+
+<details>
+<summary><b>🔋 BATTERY_PERCENT - Get battery level</b></summary>
+
+**Syntax:**
+```bash
+BATTERY_PERCENT
+```
+
+**Returns:** Battery percentage
+
+**Example:**
+```bash
+LEVEL=$(BATTERY_PERCENT)
+LOG "Battery: ${LEVEL}%"
+```
+
+**Added in firmware 1.0.7**
+
+</details>
+
 ---
 
 ## 💡 LED & Display
@@ -1524,6 +1631,20 @@ WIGLE_UPLOAD {--archive} {--remove} [/path/to/file]
 ```bash
 WIGLE_UPLOAD --archive /root/loot/wigle.log
 ```
+
+</details>
+
+<details>
+<summary><b>📦 PINEAPPLE_LOOT_ARCHIVE - Archive loot</b></summary>
+
+**Syntax:**
+```bash
+PINEAPPLE_LOOT_ARCHIVE
+```
+
+**Note:** Triggers a new recon session, wigle log, and pcap log (if enabled) after archiving.
+
+**Added in firmware 1.0.7**
 
 </details>
 
@@ -1651,7 +1772,7 @@ ALERT "Waiting for client connection..."
 FIND_CLIENT_IP "aa:bb:cc:dd:ee:ff" 60
 
 # Notify
-ALERT_RINGTONE true "Client connected!"
+ALERT "Client connected!"  # Obeys system ringtone preferences
 LED red solid
 LOG "Client connected to evil twin"
 
@@ -1749,6 +1870,24 @@ TOS_ACCEPT --i-accept
 
 ---
 
+## 📋 Changelog
+
+Version history synced with WiFi Pineapple Pager firmware releases:
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| **1.0.0** | 2025-11-26 | Initial Release |
+| **1.0.1** | 2025-12-16 | Spinner in settings, 2.4/5/6 status bar, Radio Settings, reorganized PineAP & Settings menus, filter fixes |
+| **1.0.2** | 2025-12-16 | Evil WPA wizard, faster network config reloads (7x), brightness fix, minimum PSK length |
+| **1.0.3** | 2025-12-16 | Toggle fixes, Virtual Pager Archive, DNSSPOOF_DISABLE stale config fix |
+| **1.0.4** | 2025-12-18 | Wigle upload/fix, EvilWPA BSSID fix, keyboard fixes, GPS consistency, OTA fixes |
+| **1.0.6** | 2026-01-16 | Renamed `PINEAPPLE_MAC_FILTER_*` → `PINEAPPLE_DEVICE_FILTER_*`, `PINEAPPLE_SSID_FILTER_*` → `PINEAPPLE_NETWORK_FILTER_*`, added `*_ADD_FILE` commands, removed `ALERT_RINGTONE`, added `PINEAPPLE_MIMIC_ENABLE/DISABLE`, GPS device path changes |
+| **1.0.7** | 2026-02-03 | Added `PINEAPPLE_HOPPING_START/STOP`, `PINEAPPLE_LOOT_ARCHIVE`, `BATTERY_CHARGING`, `BATTERY_PERCENT`, hidden SSID fixes, 24h clock option |
+
+> **Note:** After upgrading to 1.0.6+, you may need to reconfigure your GPS device under Settings > GPS for the new serial device naming.
+
+---
+
 ## 📚 Resources
 
 <div align="center">
@@ -1779,7 +1918,7 @@ Always ensure you have proper authorization before using these tools. Unauthoriz
 
 ## 📝 License
 
-This cheat sheet is provided as-is for educational purposes. Refer to Hak5's official documentation and terms of service for official information.
+This cheat sheet is licensed under the [MIT License](LICENSE). It is provided as-is for educational purposes. Refer to Hak5's official documentation and terms of service for official WiFi Pineapple information.
 
 ---
 
