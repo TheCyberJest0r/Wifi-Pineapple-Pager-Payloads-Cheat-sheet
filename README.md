@@ -4,7 +4,7 @@
 
 ![WiFi Pineapple Pager](https://img.shields.io/badge/WiFi-Pineapple%20Pager-blue?style=for-the-badge&logo=wifi)
 ![Bash](https://img.shields.io/badge/Bash-Functions-green?style=for-the-badge&logo=gnu-bash)
-![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE)
 
 **Complete interactive reference guide for all bash functions available on the WiFi Pineapple Pager**
 
@@ -13,7 +13,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub forks](https://img.shields.io/github/forks/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub issues](https://img.shields.io/github/issues/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
-[![GitHub license](https://img.shields.io/github/license/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
+[![GitHub license](https://img.shields.io/github/license/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE)
 
 </div>
 
@@ -1918,7 +1918,7 @@ Always ensure you have proper authorization before using these tools. Unauthoriz
 
 ## 📝 License
 
-This cheat sheet is licensed under the [MIT License](LICENSE). It is provided as-is for educational purposes. Refer to Hak5's official documentation and terms of service for official WiFi Pineapple information.
+This cheat sheet is licensed under the [MIT License](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE). It is provided as-is for educational purposes. Refer to Hak5's official documentation and terms of service for official WiFi Pineapple information.
 
 ---
 
