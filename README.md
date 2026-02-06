@@ -11,6 +11,7 @@
 [🚀 Quick Start](#-quick-start) • [📊 Diagrams](#-visual-diagrams) • [📚 Functions](#-function-reference) • [💡 Examples](#-common-workflows) • [📄 License](#-license)
 
 [![GitHub stars](https://img.shields.io/github/stars/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
+[![GitHub views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTheCyberJest0r%2FWifi-Pineapple-Pager-Payloads-Cheat-sheet&count_bg=%234a90e2&title_bg=%23555555&icon=github.svg&icon_color=%23ffffff&title=views)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub forks](https://img.shields.io/github/forks/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub issues](https://img.shields.io/github/issues/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
 
