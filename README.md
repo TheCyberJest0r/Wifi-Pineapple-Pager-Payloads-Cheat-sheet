@@ -4,15 +4,16 @@
 
 ![WiFi Pineapple Pager](https://img.shields.io/badge/WiFi-Pineapple%20Pager-blue?style=for-the-badge&logo=wifi)
 ![Bash](https://img.shields.io/badge/Bash-Functions-green?style=for-the-badge&logo=gnu-bash)
-![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 **Complete interactive reference guide for all bash functions available on the WiFi Pineapple Pager**
 
-[🚀 Quick Start](#-quick-start) • [📊 Diagrams](#-visual-diagrams) • [📚 Functions](#-function-reference) • [💡 Examples](#-common-workflows)
+[🚀 Quick Start](#-quick-start) • [📊 Diagrams](#-visual-diagrams) • [📚 Functions](#-function-reference) • [💡 Examples](#-common-workflows) • [📄 License](#-license)
 
 [![GitHub stars](https://img.shields.io/github/stars/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub forks](https://img.shields.io/github/forks/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub issues](https://img.shields.io/github/issues/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
+[![GitHub license](https://img.shields.io/github/license/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 
 </div>
 
@@ -47,6 +48,7 @@
 - [⚖️ Legal & Terms](#️-legal--terms)
 - [📋 Changelog](#-changelog)
 - [📚 Resources](#-resources)
+- [📄 License](#-license)
 
 </details>
 
@@ -1917,7 +1919,11 @@ Always ensure you have proper authorization before using these tools. Unauthoriz
 
 ## 📝 License
 
-This cheat sheet is licensed under the [MIT License](LICENSE). It is provided as-is for educational purposes. Refer to Hak5's official documentation and terms of service for official WiFi Pineapple information.
+This cheat sheet is licensed under the **MIT License**.
+
+- **Full license text:** [LICENSE](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE)
+- Provided as-is for educational and authorized security testing purposes only
+- Use of WiFi Pineapple functions is subject to Hak5's Software License Agreement and Terms of Service
 
 ---
 
@@ -1929,7 +1935,7 @@ This cheat sheet is licensed under the [MIT License](LICENSE). It is provided as
 
 **⭐ Star this repo if you find it helpful!**
 
-[📦 View on GitHub](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet) • [🐛 Report Issue](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues) • [💡 Request Feature](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
+[📦 View on GitHub](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet) • [📄 License](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE) • [🐛 Report Issue](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues) • [💡 Request Feature](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
 
 [⬆ Back to Top](#-wifi-pineapple-pager---bash-functions-cheat-sheet)
 
