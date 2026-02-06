@@ -1,7 +1,7 @@
 # 🍍 WiFi Pineapple Pager - Bash Functions Cheat Sheet
 
 <div align="center">
-
+**License:** [MIT](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE)
 ![WiFi Pineapple Pager](https://img.shields.io/badge/WiFi-Pineapple%20Pager-blue?style=for-the-badge&logo=wifi)
 ![Bash](https://img.shields.io/badge/Bash-Functions-green?style=for-the-badge&logo=gnu-bash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/blob/main/LICENSE)
