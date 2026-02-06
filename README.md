@@ -117,94 +117,117 @@
 ### System Architecture
 
 ```mermaid
-graph TB
-    subgraph "WiFi Pineapple Pager"
-        A[Core System] --> B[WiFi Stack]
-        A --> C[PineAP Engine]
-        A --> D[Network Layer]
-        A --> E[GPS Module]
-        A --> F[UI Layer]
-        
-        B --> B1[Client Mode<br/>wlan0cli]
-        B --> B2[Open AP<br/>wlan0open]
-        B --> B3[WPA AP<br/>wlan0wpa]
-        B --> B4[Management AP<br/>wlan0mgmt]
-        B --> B5[Monitor Mode<br/>wlan1mon]
-        
-        C --> C1[SSID Pool<br/>Management]
-        C --> C2[Device Filtering<br/>Allow/Deny]
-        C --> C3[Network Filtering<br/>Allow/Deny]
-        C --> C4[Deauth Engine]
-        C --> C5[Recon Sessions]
-        
-        D --> D1[OpenVPN Client]
-        D --> D2[WireGuard Client]
-        D --> D3[AutoSSH Tunnels]
-        D --> D4[DNS Spoofing]
-        
-        E --> E1[GPS Tracking]
-        E --> E2[Wigle Integration]
-        
-        F --> F1[Alerts & Dialogs]
-        F --> F2[Input Pickers]
-        F --> F3[LED Control]
-        F --> F4[Vibration]
+flowchart TB
+    subgraph Core[" "]
+        direction TB
+        A[🍍 Core System]
     end
     
-    style A fill:#4a90e2,stroke:#333,stroke-width:4px,color:#fff
-    style B fill:#50c878,stroke:#333,stroke-width:2px
-    style C fill:#ff6b6b,stroke:#333,stroke-width:2px
-    style D fill:#ffa500,stroke:#333,stroke-width:2px
-    style E fill:#9b59b6,stroke:#333,stroke-width:2px
-    style F fill:#3498db,stroke:#333,stroke-width:2px
+    subgraph WiFi["📡 WiFi Stack"]
+        direction TB
+        B1[Client Mode · wlan0cli]
+        B2[Open AP · wlan0open]
+        B3[WPA AP · wlan0wpa]
+        B4[Management AP · wlan0mgmt]
+        B5[Monitor Mode · wlan1mon]
+    end
+    
+    subgraph PineAP["🔴 PineAP Engine"]
+        direction TB
+        C1[SSID Pool]
+        C2[Device Filter]
+        C3[Network Filter]
+        C4[Deauth Engine]
+        C5[Recon Sessions]
+    end
+    
+    subgraph Network["🌐 Network Layer"]
+        direction TB
+        D1[OpenVPN]
+        D2[WireGuard]
+        D3[AutoSSH]
+        D4[DNS Spoofing]
+    end
+    
+    subgraph GPS["📍 GPS Module"]
+        direction TB
+        E1[GPS Tracking]
+        E2[Wigle]
+    end
+    
+    subgraph UI["🎨 UI Layer"]
+        direction TB
+        F1[Alerts & Dialogs]
+        F2[Input Pickers]
+        F3[LED Control]
+        F4[Vibration]
+    end
+    
+    A --> WiFi
+    A --> PineAP
+    A --> Network
+    A --> GPS
+    A --> UI
+    
+    style A fill:#4a90e2,stroke:#2d5a8e,stroke-width:3px,color:#fff
+    style WiFi fill:#50c87820,stroke:#50c878
+    style PineAP fill:#ff6b6b20,stroke:#ff6b6b
+    style Network fill:#ffa50020,stroke:#ffa500
+    style GPS fill:#9b59b620,stroke:#9b59b6
+    style UI fill:#3498db20,stroke:#3498db
 ```
 
 ### WiFi Attack Workflow
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Pager
-    participant Target
-    participant Client
+    participant U as 👤 User
+    participant P as 📱 Pager
+    participant T as 📶 Target
+    participant C as 💻 Client
     
-    User->>Pager: Start Recon Session
-    Pager->>Target: Monitor WiFi Traffic
-    Pager->>User: Collect SSIDs & MACs
+    rect rgb(240, 248, 255)
+        Note over U,T: Phase 1 — Reconnaissance
+        U->>P: Start Recon
+        P->>T: Monitor Traffic
+        P-->>U: SSIDs & MACs
+    end
     
-    User->>Pager: Add SSIDs to Pool
-    Pager->>Pager: PINEAPPLE_SSID_POOL_ADD
+    rect rgb(240, 255, 240)
+        Note over U,C: Phase 2 — Lure & Connect
+        U->>P: Add SSIDs
+        P->>P: SSID_POOL_ADD
+        U->>P: Start Pool
+        P->>P: SSID_POOL_START
+        P->>C: Advertise APs
+        C->>P: Connect
+        P-->>U: ALERT
+    end
     
-    User->>Pager: Start SSID Pool
-    Pager->>Pager: PINEAPPLE_SSID_POOL_START
-    Pager->>Client: Advertise Fake SSIDs
-    
-    Client->>Pager: Connect to Fake AP
-    Pager->>User: ALERT "Client Connected"
-    
-    User->>Pager: Enable DNS Spoofing
-    Pager->>Pager: DNSSPOOF_ADD_HOST
-    Pager->>Client: Redirect DNS Queries
-    
-    User->>Pager: Start Packet Capture
-    Pager->>Pager: WIFI_PCAP_START
-    Pager->>User: Log Captured Data
+    rect rgb(255, 248, 240)
+        Note over U,C: Phase 3 — Capture
+        U->>P: Enable DNS Spoof
+        P->>P: DNSSPOOF_ADD_HOST
+        P->>C: Redirect DNS
+        U->>P: Start Capture
+        P->>P: WIFI_PCAP_START
+        P-->>U: Log Data
+    end
 ```
 
 ### Network Setup Flow
 
 ```mermaid
 flowchart TD
-    Start([Device Boot]) --> Accept{Accept<br/>Terms?}
-    Accept -->|No| End1([Cannot Proceed])
-    Accept -->|Yes| SLA[SLA_ACCEPT]
-    SLA --> TOS[TOS_ACCEPT]
+    Start([🚀 Device Boot]) --> Accept{Accept<br/>Terms?}
+    Accept -->|No| End1([❌ Cannot Proceed])
+    Accept -->|Yes| Terms[SLA_ACCEPT<br/>TOS_ACCEPT]
     
-    TOS --> Config{Configure<br/>Network?}
+    Terms --> Config{Configure<br/>Network?}
     
-    Config -->|WiFi Client| WiFi[WIFI_CONNECT]
-    Config -->|VPN| VPN{Which VPN?}
-    Config -->|SSH Tunnel| SSH[AUTOSSH_CONFIGURE]
+    Config -->|WiFi| WiFi[WIFI_CONNECT]
+    Config -->|VPN| VPN{Type?}
+    Config -->|SSH| SSH[AUTOSSH_CONFIGURE]
     
     VPN -->|OpenVPN| OVPN[OPENVPN_CONFIGURE]
     VPN -->|WireGuard| WG[WIREGUARD_CONFIGURE]
@@ -214,32 +237,36 @@ flowchart TD
     WG --> WG_EN[WIREGUARD_ENABLE]
     SSH --> SSH_EN[AUTOSSH_ENABLE]
     
-    Wait --> Success([Connected])
+    Wait --> Success([✅ Connected])
     OVPN_EN --> Success
     WG_EN --> Success
     SSH_EN --> Success
     
-    style Start fill:#90EE90
-    style Success fill:#87CEEB
-    style End1 fill:#FFB6C1
+    style Start fill:#90EE90,stroke:#228B22
+    style Success fill:#87CEEB,stroke:#4682B4
+    style End1 fill:#FFB6C1,stroke:#DC143C
+    style Terms fill:#E6E6FA,stroke:#4B0082
 ```
 
 ### Payload Execution Flow
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Initialized: Device Ready
-    Initialized --> TermsAccepted: SLA_ACCEPT<br/>TOS_ACCEPT
+    [*] --> Initialized
+    Initialized --> TermsAccepted: SLA_ACCEPT / TOS_ACCEPT
     TermsAccepted --> Configuring: PAYLOAD_SET_CONFIG
     Configuring --> WiFiSetup: WIFI_CONNECT
     WiFiSetup --> Connected: WIFI_WAIT
-    Connected --> PineAP: PINEAPPLE_SSID_POOL_START
-    PineAP --> Monitoring: PINEAPPLE_RECON_NEW
+    Connected --> PineAP: SSID_POOL_START
+    PineAP --> Monitoring: RECON_NEW
     Monitoring --> ClientDetected: Client Connects
     ClientDetected --> DataCollection: WIFI_PCAP_START
-    DataCollection --> Logging: LOG Data
+    DataCollection --> Logging: LOG
     Logging --> Upload: WIGLE_UPLOAD
-    Upload --> [*]: Complete
+    Upload --> [*]: Done
+    
+    note right of Initialized: Device Ready
+    note right of Upload: Archive & Complete
 ```
 
 ---
