@@ -13,7 +13,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub forks](https://img.shields.io/github/forks/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet?style=social)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)
 [![GitHub issues](https://img.shields.io/github/issues/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet/issues)
-[![GitHub license](https://img.shields.io/github/license/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet)](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 </div>
 
