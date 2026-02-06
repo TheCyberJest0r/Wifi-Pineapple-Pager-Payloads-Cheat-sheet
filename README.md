@@ -132,8 +132,8 @@ graph TB
         B --> B5[Monitor Mode<br/>wlan1mon]
         
         C --> C1[SSID Pool<br/>Management]
-        C --> C2[MAC Filtering<br/>Allow/Deny]
-        C --> C3[SSID Filtering<br/>Allow/Deny]
+        C --> C2[Device Filtering<br/>Allow/Deny]
+        C --> C3[Network Filtering<br/>Allow/Deny]
         C --> C4[Deauth Engine]
         C --> C5[Recon Sessions]
         
